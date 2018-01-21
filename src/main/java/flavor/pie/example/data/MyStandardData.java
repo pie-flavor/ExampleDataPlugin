@@ -11,6 +11,8 @@ import org.spongepowered.api.data.value.mutable.Value;
 import java.util.Optional;
 import java.util.UUID;
 
+// Example of complex data
+// Example of multi-class layout
 public class MyStandardData extends AbstractData<MyStandardData, MyImmutableStandardData> {
     private String name;
     private int amount;
@@ -20,6 +22,7 @@ public class MyStandardData extends AbstractData<MyStandardData, MyImmutableStan
         this.name = name;
         this.amount = amount;
         this.id = id;
+        // you must call this!
         registerGettersAndSetters();
     }
 
@@ -61,6 +64,7 @@ public class MyStandardData extends AbstractData<MyStandardData, MyImmutableStan
         return Optional.of(this);
     }
 
+    // the double method isn't strictly necessary but makes implementing the builder easier
     @Override
     public Optional<MyStandardData> from(DataContainer container) {
         return from((DataView) container);
@@ -92,9 +96,11 @@ public class MyStandardData extends AbstractData<MyStandardData, MyImmutableStan
         return 1;
     }
 
+    // IMPORTANT this is what causes your data to be written to NBT
     @Override
     public DataContainer toContainer() {
-        return super.toContainer().set(MyKeys.STANDARD_AMOUNT.getQuery(), this.amount)
+        return super.toContainer()
+                .set(MyKeys.STANDARD_AMOUNT.getQuery(), this.amount)
                 .set(MyKeys.STANDARD_NAME.getQuery(), this.amount)
                 .set(MyKeys.STANDARD_ID.getQuery(), this.id);
     }

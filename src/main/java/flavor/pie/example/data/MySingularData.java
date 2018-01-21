@@ -17,13 +17,21 @@ import org.spongepowered.api.text.format.TextColors;
 
 import java.util.Optional;
 
+// Example of singular data
+// Example of single-class layout
+// Example of non-persistent data
 public class MySingularData extends AbstractSingleData<TextColor, MySingularData, MySingularData.Immutable> {
     MySingularData(TextColor color) {
         super(color, MyKeys.SINGULAR_COLOR);
     }
+
     @Override
-    protected Value<?> getValueGetter() {
+    protected Value<TextColor> getValueGetter() {
         return Sponge.getRegistry().getValueFactory().createValue(MyKeys.SINGULAR_COLOR, getValue());
+    }
+
+    public Value<TextColor> color() {
+        return getValueGetter();
     }
 
     @Override
