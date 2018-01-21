@@ -20,34 +20,34 @@ public class MyKeys {
 
     static {
         STANDARD_ID = Key.builder()
+                .type(TypeTokens.UUID_VALUE_TOKEN)
                 .id("exampledataplugin:standard_id")
                 .name("Standard ID")
                 .query(DataQuery.of('.', "standard.name"))
-                .type(TypeTokens.UUID_VALUE_TOKEN)
                 .build();
         STANDARD_NAME = Key.builder()
+                .type(TypeTokens.STRING_VALUE_TOKEN)
                 .id("exampledataplugin:standard_name")
                 .name("Standard Name")
                 .query(DataQuery.of('.', "standard.name"))
-                .type(TypeTokens.STRING_VALUE_TOKEN)
                 .build();
         STANDARD_AMOUNT = Key.builder()
+                .type(TypeTokens.INTEGER_VALUE_TOKEN)
                 .id("exampledataplugin:standard_amount")
                 .name("Standard Amount")
                 .query(DataQuery.of('.', "standard.amount"))
-                .type(TypeTokens.INTEGER_VALUE_TOKEN)
                 .build();
         SINGULAR_COLOR = Key.builder()
+                .type(new TypeToken<Value<TextColor>>(){})
                 .id("exampledataplugin:singular.color")
                 .name("Singular Color")
                 .query(DataQuery.of('.', "singular.color"))
-                .type(new TypeToken<Value<TextColor>>(){})
                 .build();
         BOOL_ENABLED = Key.builder()
+                .type(TypeTokens.BOOLEAN_VALUE_TOKEN)
                 .id("exampledataplugin:bool_enabled")
                 .name("Bool Enabled")
                 .query(DataQuery.of('.', "bool.enabled"))
-                .type(TypeTokens.BOOLEAN_VALUE_TOKEN)
                 .build();
     }
 }
